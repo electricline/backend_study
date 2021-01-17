@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "naver.openapi")
 public class NaverProperties {
     private String movieUrl;
+    private String bookUrl;
     private String clientId;
     private String clientSecret;
 }
