@@ -1,7 +1,7 @@
-package com.harden.backend_study.movie.repository;
+package com.harden.backend_study.domain.movie.repository;
 
-import com.harden.backend_study.movie.dto.Movie;
-import com.harden.backend_study.movie.dto.ResponseMovie;
+import com.harden.backend_study.domain.movie.dto.Movie;
+import com.harden.backend_study.domain.movie.dto.ResponseMovie;
 import com.harden.backend_study.config.NaverProperties;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

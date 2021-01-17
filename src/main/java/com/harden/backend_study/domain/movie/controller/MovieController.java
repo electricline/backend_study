@@ -1,7 +1,7 @@
-package com.harden.backend_study.movie.controller;
+package com.harden.backend_study.domain.movie.controller;
 
-import com.harden.backend_study.movie.dto.Movie;
-import com.harden.backend_study.movie.service.MovieService;
+import com.harden.backend_study.domain.movie.dto.Movie;
+import com.harden.backend_study.domain.movie.service.MovieService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

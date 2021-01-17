@@ -1,4 +1,4 @@
-package com.harden.backend_study.movie.dto;
+package com.harden.backend_study.domain.movie.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

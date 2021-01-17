@@ -1,8 +1,8 @@
-package com.harden.backend_study.movie.service;
+package com.harden.backend_study.domain.movie.service;
 
-import com.harden.backend_study.movie.dto.Movie;
-import com.harden.backend_study.movie.dto.MovieGroup;
-import com.harden.backend_study.movie.repository.MovieRepository;
+import com.harden.backend_study.domain.movie.dto.Movie;
+import com.harden.backend_study.domain.movie.dto.MovieGroup;
+import com.harden.backend_study.domain.movie.repository.MovieRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
