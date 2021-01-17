@@ -1,16 +1,11 @@
-package com.harden.backend_study.movie.service;
+package com.harden.backend_study.domain.movie.service;
 
-import com.harden.backend_study.config.NaverProperties;
-import com.harden.backend_study.movie.dto.Movie;
-import com.harden.backend_study.movie.repository.MovieRepositoryImpl;
+import com.harden.backend_study.domain.movie.dto.Movie;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
