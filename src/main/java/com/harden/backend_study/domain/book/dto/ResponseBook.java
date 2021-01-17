@@ -29,7 +29,7 @@ public class ResponseBook {
         private Date price;
         private String discount;
         private String publisher;
-        private Integer isbn;
+        private String isbn;
     }
 
 }
