@@ -35,6 +35,7 @@ public class MovieRepositoryImpl implements MovieRepository {
                 .getBody()
                 .getItems()
                 .stream()
+                .filter(m -> m.getUserRating() > 8)
                 .map(m -> Movie.builder()
                         .title(m.getTitle())
                         .link(m.getLink())
