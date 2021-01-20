@@ -30,7 +30,7 @@ class MovieServiceTest {
         MovieService movieService = new MovieService(movieRepository);
 
         // when
-        List<Movie> movieList = movieService.search("반지의제왕");
+        List<Movie> movieList = movieService.search("영화");
 
         // then
         var maxRating = 10f;
@@ -41,6 +41,24 @@ class MovieServiceTest {
             Assertions.assertThat(movie.getUserRating()).isLessThanOrEqualTo(maxRating);
             maxRating = movie.getUserRating();
         }
+    }
+
+    @Test
+    @DisplayName("평점 8점 이상만 불러오기")
+    void moreThan8userRating() {
+
+        //given
+        given(movieRepository.findByQuery(anyString())).willReturn(getStubMovies());
+        MovieService movieService = new MovieService(movieRepository);
+
+        //when
+        List<Movie> movieList = movieService.search("영화");
+
+        //then
+        movieList.stream().forEach(movie ->  {
+            Assertions.assertThat(movie.getUserRating()).isGreaterThanOrEqualTo(8f);
+        });
+
     }
 
     List<Movie> getStubMovies() {
