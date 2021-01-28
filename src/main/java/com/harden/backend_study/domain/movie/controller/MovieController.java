@@ -2,6 +2,7 @@ package com.harden.backend_study.domain.movie.controller;
 
 import com.harden.backend_study.domain.movie.dto.Movie;
 import com.harden.backend_study.domain.movie.service.MovieService;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,4 +25,9 @@ public class MovieController {
         return movieService.search(query);
     }
 
+
+    @GetMapping("initCache") @Scheduled(cron = "0 * * * * *") // 1분마다 실행
+    public void initCache(){
+        movieService.initBookLocalCache();
+    }
 }
