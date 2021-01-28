@@ -1,5 +1,6 @@
 package com.harden.backend_study.domain.movie.service;
 
+import com.harden.backend_study.cache.MovieLocalCacheImpl;
 import com.harden.backend_study.domain.movie.dto.Movie;
 import com.harden.backend_study.domain.movie.repository.MovieRepository;
 import org.assertj.core.api.Assertions;
@@ -20,6 +21,8 @@ class MovieServiceTest {
 
     @Mock
     private MovieRepository movieRepository;
+    @Mock
+    private MovieLocalCacheImpl movieLocalCache;
 
     @Test
     @DisplayName("평점 순으로 정렬하기")
@@ -27,7 +30,7 @@ class MovieServiceTest {
 
         //given
         given(movieRepository.findByQuery(anyString())).willReturn(getStubMovies());
-        MovieService movieService = new MovieService(movieRepository);
+        MovieService movieService = new MovieService(movieRepository,movieLocalCache);
 
         // when
         List<Movie> movieList = movieService.search("영화");
@@ -49,7 +52,7 @@ class MovieServiceTest {
 
         //given
         given(movieRepository.findByQuery(anyString())).willReturn(getStubMovies());
-        MovieService movieService = new MovieService(movieRepository);
+        MovieService movieService = new MovieService(movieRepository, movieLocalCache);
 
         //when
         List<Movie> movieList = movieService.search("영화");
