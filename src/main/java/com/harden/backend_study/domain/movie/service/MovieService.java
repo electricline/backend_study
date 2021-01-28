@@ -25,8 +25,8 @@ public class MovieService {
         return new MovieGroup(movieRepository.findByQuery(query)).getListOrderRating();
     }
 
-    public void initBookLocalCache(){
-        log.info("book local cache init");
+    public void initMovieLocalCache(){
+        log.info("local cache init");
         movieLocalCache.clear();
     }
 

@@ -28,6 +28,6 @@ public class MovieController {
 
     @GetMapping("initCache") @Scheduled(cron = "0 * * * * *") // 1분마다 실행
     public void initCache(){
-        movieService.initBookLocalCache();
+        movieService.initMovieLocalCache();
     }
 }
