@@ -25,6 +25,14 @@ public class MovieService {
         return new MovieGroup(movieRepository.findByQuery(query)).getListOrderRating();
     }
 
+    public Movie recommendTodayMovie() {
+
+        var query ="반지의 제왕";
+
+        MovieGroup movieGroup = new MovieGroup(movieRepository.findByQuery(query));
+        return movieGroup.getHighestRatingMovie().orElse(Movie.builder().title("기본영화").link("http://").userRating(9.9f).build());
+    }
+
     public void initMovieLocalCache(){
         log.info("local cache init");
         movieLocalCache.clear();
