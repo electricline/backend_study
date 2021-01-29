@@ -37,9 +37,11 @@ public class MovieRepositoryImpl implements MovieRepository {
         httpHeaders.add("X-Naver-Client-Secret", naverProperties.getClientSecret());
         String url = naverProperties.getMovieUrl() + "?query=" + query;
 
-        if(movieLocalCache.containsKey(query)){
-            log.info("cache call");
-            return (List<Movie>) movieLocalCache.get(query);
+        synchronized (movieLocalCache){
+            if (movieLocalCache.containsKey(query)) {
+                log.info("cache call");
+                return (List<Movie>) movieLocalCache.get(query);
+            }
         }
 
         List<Movie> movieList = restTemplate.exchange(url, HttpMethod.GET, new HttpEntity(httpHeaders), ResponseMovie.class)
@@ -54,9 +56,13 @@ public class MovieRepositoryImpl implements MovieRepository {
                         .build())
                 .collect(Collectors.toList());
 
-        movieLocalCache.put(query, movieList);
-        log.info("cache miss");
-        return (List<Movie>) movieLocalCache.get(query);
+        synchronized (movieLocalCache){
+            if(!movieLocalCache.containsKey(query)) {
+                movieLocalCache.put(query, movieList);
+                log.info("cache miss");
+            }
+        }
 
+        return (List<Movie>) movieLocalCache.get(query);
     }
 }
