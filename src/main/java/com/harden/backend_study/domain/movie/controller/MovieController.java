@@ -26,7 +26,7 @@ public class MovieController {
     }
 
 
-    @GetMapping("initCache") @Scheduled(cron = "* /10 * * * *") // 1분마다 실행
+    @GetMapping("initCache") @Scheduled(cron = "* 10 * * * *") // 1분마다 실행
     public void initCache(){
         movieService.initMovieLocalCache();
     }
