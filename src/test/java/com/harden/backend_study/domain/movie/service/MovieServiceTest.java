@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.anyString;
@@ -61,6 +62,23 @@ class MovieServiceTest {
         movieList.stream().forEach(movie ->  {
             Assertions.assertThat(movie.getUserRating()).isGreaterThanOrEqualTo(8f);
         });
+
+    }
+
+    @Test
+    @DisplayName("추천 할 영화가 없을 때, 디폴트 영화 제공")
+    void shouldDefaultMovieWhenNoneRecommend(){
+
+        //given
+        var expectedDefaultMovie = "기본영화";
+        given(movieRepository.findByQuery(anyString())).willReturn(Collections.emptyList());
+        MovieService movieService = new MovieService(movieRepository, movieLocalCache);
+
+        //when
+        var recommendMovie = movieService.recommendTodayMovie();
+
+        //then
+        Assertions.assertThat(expectedDefaultMovie).isSameAs(recommendMovie.getTitle());
 
     }
 
