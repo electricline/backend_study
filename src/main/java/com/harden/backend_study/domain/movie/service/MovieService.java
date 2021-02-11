@@ -1,5 +1,6 @@
 package com.harden.backend_study.domain.movie.service;
 
+import com.harden.backend_study.cache.LookAsideCaching;
 import com.harden.backend_study.cache.MovieLocalCacheImpl;
 import com.harden.backend_study.domain.movie.dto.Movie;
 import com.harden.backend_study.domain.movie.dto.MovieGroup;
@@ -22,6 +23,7 @@ public class MovieService {
         this.movieLocalCache = movieLocalCache;
     }
 
+    @LookAsideCaching(value = "cache::search-movies", key ="query")
     public List<Movie> search(final String query){
         return new MovieGroup(movieRepository.findByQuery(query)).getListOrderRating();
     }
