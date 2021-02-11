@@ -2,6 +2,7 @@ package com.harden.backend_study.domain.movie.repository;
 
 
 import com.harden.backend_study.cache.MovieLocalCacheImpl;
+import com.harden.backend_study.config.aop.PerformanceTimeRecord;
 import com.harden.backend_study.domain.movie.dto.Movie;
 import com.harden.backend_study.domain.movie.dto.ResponseMovie;
 import com.harden.backend_study.config.NaverProperties;
@@ -29,6 +30,7 @@ public class MovieRepositoryImpl implements MovieRepository {
         this.movieLocalCache = movieLocalCache;
     }
 
+    @PerformanceTimeRecord
     @Override
     public List<Movie> findByQuery(final String query) {
 
